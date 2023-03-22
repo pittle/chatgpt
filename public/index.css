@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+.wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.wrap header{
+    background: #5e5e5e;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#fff;
+    font-weight: bold;
+}
+.wrap section{
+    background: rgb(250,250,250);
+    flex-grow: 18;
+    overflow: scroll;
+    position: relative;
+}
+.wrap section .container{
+    position: absolute;
+    width: 100%;
+}
+
+.myChat {
+    position: relative;
+    display: inline-block;
+    float: right;
+    background: rgb(158,234,106);
+    padding: 5px 10px;
+    line-height: 25px;
+    border-radius: 5px;
+    margin-right: 10px;
+    max-width: 60%;
+}
+
+.myChat:after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: -10px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color:rgb(250,250,250) rgb(250,250,250) rgb(250,250,250) rgb(158,234,106);
+}
+
+.robotChat {
+    position: relative;
+    display: inline-block;
+    float: left;
+    background: white;
+    padding: 5px 10px;
+    line-height: 25px;
+    border-radius: 5px;
+    margin-left: 10px;
+    max-width: 60%;
+}
+
+.robotChat:after {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -10px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color:rgb(250,250,250) #fff rgb(250,250,250) rgb(250,250,250);
+}
+
+.wrap footer{
+    background: rgb(240,243,246);
+    flex-grow: 1;
+    display: flex;
+    padding:0 20px;
+    align-items: center;
+}
+.wrap footer input{
+    flex-grow:3;
+    margin-right: 5px;
+    line-height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    white-space: wrap;
+}
+.wrap footer .btn{
+    flex-grow:1;
+    height: 30px;
+    border:none;
+    outline: none;
+    border-radius: 5px;
+    background: #5e5e5e;
+    opacity: 0.5;
+    color:#fff;
+}
+
+
+
+
+                                                                                                                                         /*</div>*/
+/* 一种思想是分别给自己的聊天 和 机器人的聊天添加 不同class*/
+/*.wrap section .container .item{*/
+    /*box-sizing: border-box;*/
+    /*margin:10px 0;*/
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    /*float: right;*/
+
+/*}*/
+/*.wrap section .container .item img{*/
+    /*width: 35px;*/
+    /*height: 35px;*/
+/*}*/
+/*.wrap section .container .item .msg{*/
+    /*padding: 5px 10px;*/
+    /*line-height: 25px;*/
+    /*border-radius: 5px;*/
+    /*background: rgb(158,234,106);*/
+    /*display: inline-block;*/
+    /*max-width: 60%;*/
+    /*word-break: break-all;*/
+    /*position: relative;*/
+    /*float: right;*/
+    /*margin-right:55px;*/
+/*}*/
+/*.wrap section .container .item .msg + img{*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+    /*top:40%;*/
+/*}*/
+/*.wrap section .container .item .msg::after{*/
+    /*content: "";*/
+    /*position: absolute;*/
+    /*right: -10px;*/
+    /*top:50%;*/
+    /*display: block;*/
+    /*border-width: 5px;*/
+    /*border-style: solid;*/
+    /*border-color:rgb(250,250,250) rgb(250,250,250) rgb(250,250,250) rgb(158,234,106);*/
+
+/*}*/
+/*.wrap section .container .item .robot{*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+    /*max-width: 60%;*/
+    /*padding: 5px 10px;*/
+    /*line-height: 25px;*/
+    /*border-radius: 5px;*/
+    /*margin:0 10px;*/
+    /*word-break: break-all;*/
+    /*background: rgb(255,255,255);*/
+/*}*/
+
+/*.wrap section .container .item .robot::after{*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top:50%;*/
+    /*left: -10px;*/
+    /*display: block;*/
+    /*border-width: 5px;*/
+    /*border-style: solid;*/
+    /*border-color:rgb(250,250,250) #fff rgb(250,250,250) rgb(250,250,250);*/
+/*}*/
+

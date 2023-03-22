@@ -1,0 +1,23 @@
+{
+  "name": "chatgpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon node koa.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/router": "^12.0.0",
+    "chatgpt": "^5.1.2",
+    "dotenv-safe": "^8.2.0",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.4.0",
+    "mime": "^3.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
