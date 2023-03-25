@@ -20,19 +20,61 @@
         <button class="btn" onclick="sendMsg(event)">发送</button>
       </footer>
     </div>
-    <script type="importmap">
-      {
-        "imports": {
-          "laf-client-sdk": "https://cdn.jsdelivr.net/npm/laf-client-sdk/+esm"
+
+    <script>
+      const addURL = (url, param) => {
+        if (param && Object.keys(param).length) {
+          // 数据不为空
+          // 判断url后添加的字符是'?'还是'&'
+          url += url.indexOf("?") === -1 ? "?" : "&"
+          // 拼接数据
+          Object.keys(param).map((key) => {
+            url += `${key}=${param[key]}`
+          })
+        }
+        return url
+      }
+
+      function ajax({
+        url,
+        method,
+        data = {},
+        header,
+        async = true, // 默认为异步请求,
+        timeout = 60 * 1000, //默认60s
+        callback,
+      }) {
+        const requestURL = method === "get" ? addURL(url, data) : url
+        const sendData = method === "get" ? null : data
+
+        var xhr = null
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest()
+        } else {
+          xhr = new ActiveXObject("Microsoft.XMLHttp")
+        }
+        xhr.open(method, requestURL, async)
+        if (header && Object.keys(header).length) {
+          Object.keys(header).map((key) => {
+            xhr.setRequestHeader(key, header[key])
+          })
+        }
+        xhr.send(sendData)
+        xhr.timeout = timeout
+        xhr.ontimeout = () => {
+          console.log("timeout")
+        }
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              var result = JSON.parse(xhr.responseText)
+              typeof callback == "function" && callback(result.text, 2)
+            }
+          }
         }
       }
-    </script>
-    <script type="module">
-      import { send } from "./cloud.js"
 
-      window.sendMsg = sendMsg
-
-      async function sendMsg(e) {
+      function sendMsg(e) {
         var input = document.getElementsByClassName("input")[0]
         var val = input.value
         if (!val) {
@@ -41,10 +83,19 @@
         if (event instanceof KeyboardEvent && event.key != "Enter") {
           return
         }
+        ajax({
+          url: "http://localhost:9527/api/user/",
+          method: "post",
+          data: JSON.stringify({
+            val,
+          }),
+          header: {
+            "Content-Type": "application/json",
+          },
+          callback: appendChat,
+        })
         appendChat(val, 1)
         input.value = ""
-        const res = await send(val)
-        appendChat(res.text, 2)
       }
 
       function appendChat(msg, type) {

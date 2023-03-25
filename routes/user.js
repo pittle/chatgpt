@@ -8,7 +8,13 @@ const router = new Router({
 
 router.post("/", async (ctx) => {
   const text = ctx.request.body
-  const msg = await api.sendMessage(text.val)
+  let msg;
+  try {
+    msg = await api.sendMessage(text.val)
+  } catch (e) {
+    console.log(e)
+    msg = e.message
+  }
   ctx.body = {
     text: msg
   }
